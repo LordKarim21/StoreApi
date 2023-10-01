@@ -1,12 +1,13 @@
-from models import User
+from user.models import User
+from order.models import Order
+
 from rest_framework.test import APIClient
 from django.test import TestCase
 from rest_framework import status
-from models import Order
 from django.urls import reverse_lazy
 
 
-class TestCaseModulOrder(TestCase):
+class ViewsTestCase(TestCase):
     def setUp(self) -> None:
         user_data = {
             "password": "testAdmin",
@@ -15,8 +16,7 @@ class TestCaseModulOrder(TestCase):
         self.user = User.objects.create_user(user_data)
         self.order = Order.objects.create(
             initiator=self.user,
-            first_name='John',
-            last_name='Doe',
+            full_name="John Doe",
             email='john@example.com',
             address='123 Main St',
             status='o',
@@ -33,8 +33,7 @@ class TestCaseModulOrder(TestCase):
     def test_create_order(self):
         data = {
             'initiator': self.user.id,
-            "first_name": "test",
-            "last_name": "test",
+            'full_name': "John Doe",
             "email": "test@test.test",
             "address": "testAddress",
             "total_cost": 12.00

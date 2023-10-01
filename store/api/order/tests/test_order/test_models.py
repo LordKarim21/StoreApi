@@ -12,7 +12,7 @@ class TestCaseModulOrder(TestCase):
             "username": "testAdmin",
             }
         self.user = User.objects.create_user(user_data)
-        self.order = Order.objects.create(initiator=self.user, first_name="test", last_name="test",
+        self.order = Order.objects.create(initiator=self.user, full_name="test test",
                                           email="test@test.test", address="testAddress", total_cost=12.00)
 
     def test_exists_user_and_order(self):

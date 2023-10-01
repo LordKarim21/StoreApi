@@ -1,6 +1,5 @@
 from rest_framework import fields, serializers
-
-from models import Basket, Product, ProductCategory, Reviews, Tag, ProductImage
+from .models import Basket, Product, ProductCategory, Reviews, Tag, ProductImage
 
 
 class ImageSerializer(serializers.ModelSerializer):
